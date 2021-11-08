@@ -1,20 +1,18 @@
 const botonesNumeros = document.querySelectorAll('.numero');
 const botonesOperadores = document.querySelectorAll('.operador');
 const resultado = document.getElementById("resultado")
-let numeroSelecionado = ""
-let primerElemento
+let numeroSelecionado = 0
+let numeroNuevo = 0
+let valorANumero
 
 function agregarNumero(boton) {
-    botonString = boton.toString()
-    numeroSelecionado = botonString + numeroSelecionado
-    console.log("numero seleccionado" + numeroSelecionado)
-    pasarStringANumero(numeroSelecionado)
+    primerElemento = parseInt(boton)
+    numeroSelecionado = "".concat(numeroSelecionado, primerElemento)
+    valorANumero = parseInt(numeroSelecionado)
+    numeroNuevo = valorANumero + 0
+    console.log(numeroNuevo)
 }
 
-function pasarStringANumero(string){
-numeroSelecionado= parseInt(string)
-console.log(numeroSelecionado)
-}
 botonesNumeros.forEach(boton => {
     boton.addEventListener('click', () => agregarNumero(boton.innerHTML));
 });
@@ -22,9 +20,4 @@ botonesNumeros.forEach(boton => {
 botonesOperadores.forEach(boton => {
     boton.addEventListener('click', () => computar(boton.value))
 });
-
-
-
-
-
 
