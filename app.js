@@ -1,3 +1,5 @@
+//🌎 VARIABLES Y DOM 🌎
+
 const botonesNumeros = document.querySelectorAll('.numero');
 const botonesOperadores = document.querySelectorAll('.operador');
 const resultado = document.getElementById("resultado")
@@ -15,6 +17,9 @@ let resultadoDeLaResta = 0
 let resultadoDeLaDivision = 0
 let resultadoDeLaMultiplicacion = 0
 let operacion = ""
+
+// 🌎AGREGA EL PRIMER VALOR A OPERAR Y EL SEGUNDO VALOR A OPERAR🌎
+
 function agregarNumero(boton) {
     if (terminaPrimerValor) {
         segundoElemento = parseInt(boton)
@@ -22,30 +27,44 @@ function agregarNumero(boton) {
         valorASegundoNumero = parseInt(segundoNumeroSelecionado)
         segundoValor = valorASegundoNumero + 0
         console.log(segundoValor)
+        resultado.textContent = `${segundoValor}`
+
     } else {
         primerElemento = parseInt(boton)
         numeroSelecionado = "".concat(numeroSelecionado, primerElemento)
         valorANumero = parseInt(numeroSelecionado)
         primerValor = valorANumero + 0
         console.log(primerValor)
+        resultado.textContent = `${primerValor}`
+
     }
 }
+
+// 🌎 OPERACIONES 🌎
 
 function suma() {
     if (terminaPrimerValor && segundoValor >= 1) {
         resultadoDeLaSuma = primerValor + segundoValor
         console.log(resultadoDeLaSuma)
+        resultado.textContent = `${resultadoDeLaSuma}`
+
     } else {
-        console.log("aprende a sumar, rey")
+        resultadoDeLaSuma = primerValor + 0
+        resultado.textContent = `${resultadoDeLaSuma}`
+
     }
+
 }
+
 
 function resta() {
     if (terminaPrimerValor && segundoValor >= 1) {
         resultadoDeLaResta = primerValor - segundoValor
         console.log(resultadoDeLaResta)
+        resultado.textContent = `${resultadoDeLaResta}`
     } else {
-        console.log("aprende a restar, rey")
+        resultadoDeLaResta = primerValor - 0
+        resultado.textContent = `${resultadoDeLaResta}`
     }
 }
 
@@ -53,9 +72,10 @@ function division() {
     if (terminaPrimerValor && segundoValor >= 1) {
         resultadoDeLaDivision = primerValor / segundoValor
         console.log(resultadoDeLaDivision)
+        resultado.textContent = `${resultadoDeLaDivision}`
     } else {
         resultadoDeLaDivision = 0
-        console.log("no se puede dividir por cero, rey, compráte unas clases de platzi")
+        resultado.textContent = `${resultadoDeLaDivision}`
     }
 }
 
@@ -63,10 +83,11 @@ function multiplicacion() {
 
     if (terminaPrimerValor && segundoValor >= 1) {
         resultadoDeLaMultiplicacion = primerValor * segundoValor
-        console.log(resultadoDeLaMultiplicacion)
+        resultado.textContent = `${resultadoDeLaMultiplicacion}`
     } else {
         resultadoDeLaMultiplicacion = 1
-        console.log(resultadoDeLaMultiplicacion)
+        resultado.textContent = `${resultadoDeLaMultiplicacion}`
+
     }
 }
 
@@ -79,6 +100,7 @@ function decimal() {
         console.log(primerValor)
     }
 }
+
 function volverACero() {
     numeroSelecionado = 0
     primerValor = 0
@@ -94,7 +116,10 @@ function volverACero() {
     resultadoDeLaDivision = 0
     resultadoDeLaMultiplicacion = 0
     operacion = ""
+    resultado.textContent = `${0}`
 }
+
+// 🌎CUANDO SE SELECCIONA UNA OPERACIÓN🌎
 
 function computar(boton) {
     terminaPrimerValor = true
@@ -122,10 +147,10 @@ function computar(boton) {
     else {
         operacion = boton
         console.log(operacion)
-
     }
 }
 
+// 🌎CLICKS🌎
 
 botonesNumeros.forEach(boton => {
     boton.addEventListener('click', () => agregarNumero(boton.innerHTML));
