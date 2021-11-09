@@ -17,6 +17,7 @@ let resultadoDeLaResta = 0
 let resultadoDeLaDivision = 0
 let resultadoDeLaMultiplicacion = 0
 let operacion = ""
+let action = "decimal"
 
 // 🌎AGREGA EL PRIMER VALOR A OPERAR Y EL SEGUNDO VALOR A OPERAR🌎
 
@@ -123,7 +124,7 @@ function volverACero() {
 
 function computar(boton) {
     terminaPrimerValor = true
-    console.log(boton)
+    console.log('Este valor es del boton: ', boton)
     if (segundoValor > 0 && boton == "=") {
         if (operacion == "+") {
             suma()
@@ -135,12 +136,36 @@ function computar(boton) {
             division()
         }
     } else if (boton == ".") {
+        // if (action === "decimal") {
+        //     if (!primerValor.includes(".")) {
+        //       display.textContent = primerValor + ".";
+        //     } else if (
+        //       previousKeyType === "operator" ||
+        //       previousKeyType === "calculate"
+        //     ) {
+        //       display.textContent = "0.";
+        //     }
+      
+        //     calculator.dataset.previousKeyType = "decimal";
+        //   }
+      
+        const resultadoActual = resultado.innerHTML;
+
         if (esDecimal) {
-            console.log("ya era decimal")
+
+            if ( !resultadoActual.includes('.') ) {
+                const resultadoNuevo = resultadoActual + '.';
+                resultado.innerHTML = resultadoNuevo;
+            }
+
         } else {
             decimal()
+            const resultadoNuevo = resultadoActual + '.';
+            resultado.innerHTML = resultadoNuevo;
             esDecimal = true
         }
+
+
     } else if (boton == "AC") {
         volverACero()
     }
@@ -148,16 +173,19 @@ function computar(boton) {
         operacion = boton
         console.log(operacion)
     }
+
+    console.log('---------------------')
+
 }
 
 // 🌎CLICKS🌎
 
-botonesNumeros.forEach(boton => {
+botonesNumeros.forEach( boton => {
     boton.addEventListener('click', () => agregarNumero(boton.innerHTML));
 });
 
-botonesOperadores.forEach(boton => {
-    boton.addEventListener('click', () => computar(boton.innerHTML))
+botonesOperadores.forEach( boton => {
+    boton.addEventListener('click', () => computar(boton.innerHTML) )
     console.log(boton.innerHTML)
 
 });
