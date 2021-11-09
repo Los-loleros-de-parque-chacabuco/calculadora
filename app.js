@@ -62,7 +62,7 @@ function division() {
 function multiplicacion() {
 
     if (terminaPrimerValor && segundoValor >= 1) {
-        resultadoDeLaMultiplicacion = primerValor + segundoValor
+        resultadoDeLaMultiplicacion = primerValor * segundoValor
         console.log(resultadoDeLaMultiplicacion)
     } else {
         resultadoDeLaMultiplicacion = 1
@@ -104,9 +104,9 @@ function computar(boton) {
             suma()
         } else if (operacion == "-") {
             resta()
-        } else if (operacion == "*") {
+        } else if (operacion == "x") {
             multiplicacion()
-        } else if (operacion == "/") {
+        } else if (operacion == "%") {
             division()
         }
     } else if (boton == ".") {
