@@ -158,7 +158,6 @@ botonesNumeros.forEach(boton => {
 
 botonesOperadores.forEach(boton => {
     boton.addEventListener('click', () => computar(boton.innerHTML))
-    console.log(boton.innerHTML)
 
 });
 
